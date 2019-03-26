@@ -5,7 +5,14 @@ export default class Header extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <TextInput placeholder='What is your plan?' onChangeText={ (value) => console.log(value) }/>
+        <TextInput placeholder='What is your plan?' 
+          onSubmitEditing = 
+            { this.props.onSubmitTodoTask }
+          onChangeText = 
+            { this.props.onChangeTodoTask }
+          value = 
+            { this.props.todoValue }
+        />
       </View>
     )
   }
@@ -14,8 +21,7 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
   container:{
     flex: 2,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#30FF59',    
+    backgroundColor: '#30FF59',
+    padding: 10
   }
 })
