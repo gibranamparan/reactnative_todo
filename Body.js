@@ -1,11 +1,17 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet } from 'react-native'
+import { Text, View, StyleSheet, FlatList } from 'react-native'
 
 export default class Body extends Component {
   render() {
     return (
       <View style={styles.container}>
         <Text> Body Component </Text>
+        <FlatList 
+          data={ this.props.todoList }
+          renderItem = {(todo) => {
+            return <Text key={todo.item.key}>{todo.item.text}</Text>;
+          }}
+        />
       </View>
     )
   }
@@ -14,8 +20,7 @@ export default class Body extends Component {
 const styles = StyleSheet.create({
   container:{
     flex: 9,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#3D91FF'
+    backgroundColor: '#3D91FF',
+    padding: 10
   }
 })

@@ -22,7 +22,7 @@ export default class App extends React.Component {
           todoValue = { this.state.newTask }
         />
         <Text>{this.state.newTask}</Text>
-        <Body/>
+        <Body todoList = { this.state.tasksList } />
       </View>
     );
   }
@@ -31,17 +31,13 @@ export default class App extends React.Component {
     this.setState({newTask: newText});
   }
 
-  addTodoTask = () => {
-    let tasks = this.state.tasksList;
-    let newText = this.state.newTask;
-    tasks.push(newText)
-
+  addTodoTask = () => { 
     this.setState({
-      newTask: '',
-      tasksList: tasks
+      tasksList: [...this.state.tasksList, 
+        {key: this.state.tasksList.length || 0, text: this.state.newTask}
+      ],
+      newTask: ''
     })
-    console.log('***RESULT**')
-    tasks.forEach(t => console.log(t));
   }
 }
 
