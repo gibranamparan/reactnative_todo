@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Text, View, StyleSheet, FlatList } from 'react-native'
+import Task from './Task'
 
 export default class Body extends Component {
   render() {
@@ -8,9 +9,7 @@ export default class Body extends Component {
         <Text> Body Component </Text>
         <FlatList 
           data={ this.props.todoList }
-          renderItem = {(todo) => {
-            return <Text key={todo.item.key}>{todo.item.text}</Text>;
-          }}
+          renderItem = {({item}) => <Task item = {item} /> }
         />
       </View>
     )

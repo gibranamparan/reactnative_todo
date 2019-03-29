@@ -21,7 +21,6 @@ export default class App extends React.Component {
           onChangeTodoTask =  { this.changeTodoTask }
           todoValue = { this.state.newTask }
         />
-        <Text>{this.state.newTask}</Text>
         <Body todoList = { this.state.tasksList } />
       </View>
     );
@@ -32,9 +31,10 @@ export default class App extends React.Component {
   }
 
   addTodoTask = () => { 
+    console.log(this.state.tasksList.length)
     this.setState({
       tasksList: [...this.state.tasksList, 
-        {key: this.state.tasksList.length || 0, text: this.state.newTask}
+        {key: Date.now().toString(), text: this.state.newTask}
       ],
       newTask: ''
     })
